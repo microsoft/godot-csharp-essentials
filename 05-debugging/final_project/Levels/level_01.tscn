@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckn6awvol27lh"]
+
+[ext_resource type="PackedScene" uid="uid://bkxeh5hao7377" path="res://Props/player.tscn" id="1_hb0y7"]
+[ext_resource type="Script" uid="uid://ce0kw1rhsqf4h" path="res://Scripting/Debugger.cs" id="2_1jt1u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1jt1u"]
+size = Vector3(10, 0.5, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_er0or"]
+albedo_color = Color(0.368365, 0.427109, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hb0y7"]
+material = SubResource("StandardMaterial3D_er0or")
+size = Vector3(10, 0.5, 10)
+
+[node name="Level_01" type="Node3D"]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_1jt1u")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_hb0y7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.5, 0.866025, 0, -0.866025, -0.5, 0, 3.74683, -2.2269)
+
+[node name="Player" parent="." instance=ExtResource("1_hb0y7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+
+[node name="Debugger" type="Node3D" parent="."]
+script = ExtResource("2_1jt1u")

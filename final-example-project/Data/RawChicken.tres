@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://b6qaaa1mem1ra"]
+
+[ext_resource type="Texture2D" uid="uid://bk5qdi4ogjkaw" path="res://Sprites/Chicken_Uncooked.png" id="1_83u64"]
+[ext_resource type="Script" uid="uid://dns2s3niiq60s" path="res://Scripts/Data/ItemData.cs" id="2_3eoq6"]
+
+[resource]
+script = ExtResource("2_3eoq6")
+Name = "Raw Chicken"
+Icon = ExtResource("1_83u64")
+metadata/_custom_type_script = "uid://dns2s3niiq60s"

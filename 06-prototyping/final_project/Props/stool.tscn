@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8gbfts4dlnb5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hosx3"]
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.323713, 0.186599, 0.0761823, 1)
+
+[node name="Stool" type="CSGCombiner3D"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+use_collision = true
+radius = 0.4
+height = 0.078
+sides = 32
+material = SubResource("StandardMaterial3D_hosx3")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.1, 0)
+use_collision = true
+radius = 0.127
+height = 0.718
+sides = 32
+material = SubResource("StandardMaterial3D_hosx3")

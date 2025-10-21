@@ -1,0 +1,150 @@
+[gd_scene load_steps=10 format=3 uid="uid://bo2mau58deg15"]
+
+[ext_resource type="PackedScene" uid="uid://bbu51fk44bwf4" path="res://Models/Environment/Wall_Door.glb" id="1_0t7ok"]
+[ext_resource type="Material" uid="uid://ba05wqyroui2e" path="res://Materials/Wall_material.tres" id="2_shc6j"]
+[ext_resource type="Script" uid="uid://bnj26jmy5q1pn" path="res://Scripts/Interaction/Door.cs" id="3_shc6j"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_shc6j"]
+size = Vector3(0.25, 4, 1.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0t7ok"]
+size = Vector3(3, 3, 2)
+
+[sub_resource type="Animation" id="Animation_pj6ea"]
+resource_name = "Close"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel_Left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.25), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel_Right:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, -1.5), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_shc6j"]
+resource_name = "Open"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel_Left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1.1095709, 1.1095709),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 1.25)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel_Right:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_mbllx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel_Left:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel_Right:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pj6ea"]
+_data = {
+&"Close": SubResource("Animation_pj6ea"),
+&"Open": SubResource("Animation_shc6j"),
+&"RESET": SubResource("Animation_mbllx")
+}
+
+[node name="Wall_Door" instance=ExtResource("1_0t7ok")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="0"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+constant_angular_velocity = Vector3(0, 1.5707964, 0)
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="StaticBody3D" index="0"]
+depth = 0.67
+polygon = PackedVector2Array(-1.276603, -0.016269803, -1.3045232, 2.9712167, -1.0578928, 3.329529, 1.0594068, 3.3434892, 1.347918, 3.0037906, 1.3386111, 0.011650562, 1.4875202, 0.011650562, 1.5023699, 4.498802, -1.4804633, 4.5034556, -1.5023917, 0.005770445)
+
+[node name="Panel_Left" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_shc6j")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Panel_Left" index="0"]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Panel_Left/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0.875)
+shape = SubResource("BoxShape3D_shc6j")
+
+[node name="Panel_Right" parent="." index="2"]
+surface_material_override/0 = ExtResource("2_shc6j")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="Panel_Right" index="0"]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Panel_Right/StaticBody3D2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, -0.625)
+shape = SubResource("BoxShape3D_shc6j")
+
+[node name="Wall_Door" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_shc6j")
+
+[node name="Area3D" type="Area3D" parent="." index="4" node_paths=PackedStringArray("_animPlayer")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+collision_mask = 2
+script = ExtResource("3_shc6j")
+_animPlayer = NodePath("../AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0067443848, 0, 0)
+shape = SubResource("BoxShape3D_0t7ok")
+debug_color = Color(0.8487758, 0.00092911604, 0.9042291, 0.41960785)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+libraries = {
+&"": SubResource("AnimationLibrary_pj6ea")
+}

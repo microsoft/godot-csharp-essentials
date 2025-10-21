@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmums28o3uo2o"]
+
+[ext_resource type="PackedScene" uid="uid://dh036fgbbr5t2" path="res://Models/Environment/Sign.glb" id="1_tueyt"]
+[ext_resource type="Material" uid="uid://m8vkluggyk0a" path="res://Materials/Sign_material.tres" id="2_5oaog"]
+
+[node name="Sign" instance=ExtResource("1_tueyt")]
+
+[node name="Wall_Sign_001" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_5oaog")

@@ -1,0 +1,132 @@
+[gd_scene load_steps=19 format=3 uid="uid://cpdt6ft52exsi"]
+
+[ext_resource type="Material" uid="uid://dywy07t6om70w" path="res://Materials/particle_material.tres" id="1_ebd1l"]
+[ext_resource type="Texture2D" uid="uid://beikasfm8vx04" path="res://Materials/Textures/Particles/Ring.png" id="2_xrkct"]
+[ext_resource type="Texture2D" uid="uid://d0y63sg0ue0o4" path="res://Materials/Textures/Particles/Dot.png" id="3_vuhl4"]
+[ext_resource type="Texture2D" uid="uid://dflrfw6rg831f" path="res://Materials/Textures/Particles/Line.png" id="4_ipp32"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2eoc"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0.9166665, 1, 1)
+albedo_texture = ExtResource("2_xrkct")
+stencil_flags = 2
+
+[sub_resource type="QuadMesh" id="QuadMesh_7mckg"]
+material = SubResource("StandardMaterial3D_j2eoc")
+size = Vector2(1.5, 1.5)
+
+[sub_resource type="Gradient" id="Gradient_j2eoc"]
+offsets = PackedFloat32Array(0, 0.17741935, 0.8044355, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7mckg"]
+gradient = SubResource("Gradient_j2eoc")
+
+[sub_resource type="Curve" id="Curve_j2eoc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7mckg"]
+curve = SubResource("Curve_j2eoc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4cvuw"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, -1, 0)
+emission_ring_height = 0.66
+emission_ring_radius = 0.25
+emission_ring_inner_radius = 0.35
+emission_ring_cone_angle = 74.8
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_7mckg")
+color_ramp = SubResource("GradientTexture1D_7mckg")
+hue_variation_min = -2.2351742e-08
+hue_variation_max = 0.09999997
+turbulence_enabled = true
+turbulence_noise_strength = 2.0
+turbulence_noise_scale = 10.0
+turbulence_noise_speed_random = 0.0
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.010000001
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mckg"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+specular_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.5254902, 0.9019608, 1, 1)
+albedo_texture = ExtResource("3_vuhl4")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_j2eoc"]
+material = SubResource("StandardMaterial3D_7mckg")
+size = Vector2(0.025, 0.025)
+
+[sub_resource type="Gradient" id="Gradient_7mckg"]
+offsets = PackedFloat32Array(0, 0.53636366, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.3137255, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_66br4"]
+gradient = SubResource("Gradient_7mckg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7mckg"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0.5, 0)
+emission_ring_height = 0.0
+emission_ring_radius = 0.35
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+velocity_pivot = Vector3(0, 1, 0)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = -0.32999998
+initial_velocity_max = 0.32999998
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_66br4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_66br4"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.43657437, 0.9187612, 1, 1)
+albedo_texture = ExtResource("4_ipp32")
+
+[sub_resource type="QuadMesh" id="QuadMesh_eort7"]
+material = SubResource("StandardMaterial3D_66br4")
+size = Vector2(0.012, 1)
+
+[node name="Particles" type="Node3D"]
+
+[node name="Rings" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+amount = 3
+lifetime = 1.2
+speed_scale = 0.8
+fixed_fps = 60
+process_material = ExtResource("1_ebd1l")
+draw_pass_1 = SubResource("QuadMesh_7mckg")
+
+[node name="Dots" type="GPUParticles3D" parent="."]
+amount = 20
+amount_ratio = 0.8
+speed_scale = 0.5
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_4cvuw")
+draw_pass_1 = SubResource("QuadMesh_j2eoc")
+
+[node name="Lines" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+lifetime = 2.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_7mckg")
+draw_pass_1 = SubResource("QuadMesh_eort7")

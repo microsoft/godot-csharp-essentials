@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://h8mjo4lf1qgc"]
+
+[ext_resource type="PackedScene" uid="uid://bxcm3c23lyxfa" path="res://Models/Dining/Table.glb" id="1_0g5h3"]
+[ext_resource type="Material" uid="uid://chycw3qw7ngbh" path="res://Materials/Props_Material.tres" id="2_s70jy"]
+[ext_resource type="PackedScene" uid="uid://d4cmc5sdmpea4" path="res://Props/stool.tscn" id="3_s70jy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0g5h3"]
+size = Vector3(2, 1, 2)
+
+[node name="Table" instance=ExtResource("1_0g5h3")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("BoxShape3D_0g5h3")
+
+[node name="Cube" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_s70jy")
+
+[node name="Chair2" parent="." index="2" instance=ExtResource("3_s70jy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0)
+
+[node name="Chair3" parent="." index="3" instance=ExtResource("3_s70jy")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.75, 0, 0)

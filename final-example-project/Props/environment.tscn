@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dg8px4vl3ruth"]
+
+[node name="Environment" type="Node3D"]
+
+[node name="Floor_Kitchen" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.8)
+use_collision = true
+size = Vector3(10, 0.5, 6.5)
+
+[node name="Floor_Kitchen2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.5)
+use_collision = true
+size = Vector3(20, 0.5, 15)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.25, 1.8)
+size = Vector3(0.5, 5, 6)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.25, 1.8)
+size = Vector3(0.5, 5, 6)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 2.25, 12.5)
+size = Vector3(0.5, 5, 15)
+
+[node name="Door_Cutout" type="CSGBox3D" parent="CSGBox3D4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.75, 0.5)
+operation = 2
+size = Vector3(3, 3.5, 5)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.25, 2.25, 12.5)
+size = Vector3(0.5, 5, 15)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, -1.4)
+size = Vector3(10.5, 5, 0.5)
+
+[node name="Wall_Door" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 2.25, 5)
+size = Vector3(20.5, 5, 0.5)
+
+[node name="Door_Cutout" type="CSGBox3D" parent="Wall_Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
+operation = 2
+size = Vector3(3, 3.5, 5)
+
+[node name="Wall_Door2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 2.25, 19.75)
+size = Vector3(20.5, 5, 0.5)

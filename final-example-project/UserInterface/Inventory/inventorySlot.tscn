@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://c30hvfa52daah"]
+
+[ext_resource type="Script" uid="uid://cxmetwl2epib6" path="res://Scripts/UserInterface/Screenspace/Inventory/InventorySlot.cs" id="1_bp0qc"]
+[ext_resource type="Texture2D" uid="uid://bm2elowec5pkw" path="res://Sprites/Milk.png" id="2_apja2"]
+
+[node name="MarginContainer" type="MarginContainer" node_paths=PackedStringArray("_amount", "_icon")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_bp0qc")
+_amount = NodePath("Label")
+_icon = NodePath("TextureRect")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_apja2")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 1
+text = "x2"
+horizontal_alignment = 2
+vertical_alignment = 2

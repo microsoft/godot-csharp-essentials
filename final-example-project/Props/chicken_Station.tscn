@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://dohemde1nod8u"]
+
+[ext_resource type="Script" uid="uid://ds88to31mgcae" path="res://Scripts/Interaction/Collectable.cs" id="1_lkf6n"]
+[ext_resource type="Script" uid="uid://wxyqpl46rnco" path="res://Scripts/UserInterface/Worldspace/InteractUI.cs" id="1_r2ta3"]
+[ext_resource type="Script" uid="uid://bxfma2mkijyc6" path="res://Scripts/Interaction/InteractableArea.cs" id="2_a6h66"]
+[ext_resource type="PackedScene" uid="uid://dr5s4pds4kw54" path="res://Props/Food_Base.tscn" id="4_sprgd"]
+[ext_resource type="PackedScene" uid="uid://uaj3u57f1gdd" path="res://Props/chicken.tscn" id="5_ddmht"]
+[ext_resource type="PackedScene" uid="uid://cpdt6ft52exsi" path="res://Effects/Particles.tscn" id="6_64jfm"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1jt1u"]
+height = 0.706909
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ade5"]
+size = Vector3(2, 1, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_lkf6n"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_a6h66"]
+font_size = 24
+
+[node name="Barrel" type="StaticBody3D" node_paths=PackedStringArray("_area3D")]
+script = ExtResource("1_lkf6n")
+_area3D = NodePath("Area3D")
+
+[node name="Static_CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52887, 0)
+shape = SubResource("CylinderShape3D_1jt1u")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+collision_mask = 2
+script = ExtResource("2_a6h66")
+
+[node name="Area_CollisionShape" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1519165)
+shape = SubResource("BoxShape3D_6ade5")
+debug_color = Color(0.84223014, 0.0011008466, 0.9193978, 0.41960785)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, 0)
+visibility_range_begin = 1.0
+visibility_range_begin_margin = 1.0
+visibility_range_end = 4.0
+visibility_range_end_margin = 1.0
+visibility_range_fade_mode = 2
+billboard = 1
+alpha_antialiasing_edge = 1.0
+texture = SubResource("ViewportTexture_lkf6n")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D" node_paths=PackedStringArray("_label")]
+transparent_bg = true
+msaa_2d = 2
+script = ExtResource("1_r2ta3")
+_label = NodePath("Label")
+
+[node name="Label" type="Label" parent="Sprite3D/SubViewport"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Interact"
+label_settings = SubResource("LabelSettings_a6h66")
+
+[node name="FoodPillar_Base" parent="." instance=ExtResource("4_sprgd")]
+
+[node name="Chicken" parent="." instance=ExtResource("5_ddmht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5308051, 0)
+
+[node name="Particles" parent="." instance=ExtResource("6_64jfm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.055975, 0)

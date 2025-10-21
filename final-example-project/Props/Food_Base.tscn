@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr5s4pds4kw54"]
+
+[ext_resource type="PackedScene" uid="uid://wcdgsji402df" path="res://Models/Kitchen/FoodPillar_Base.glb" id="1_bs203"]
+[ext_resource type="Material" uid="uid://chycw3qw7ngbh" path="res://Materials/Props_Material.tres" id="2_080j5"]
+
+[node name="FoodPillar_Base" instance=ExtResource("1_bs203")]
+
+[node name="Base" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_080j5")

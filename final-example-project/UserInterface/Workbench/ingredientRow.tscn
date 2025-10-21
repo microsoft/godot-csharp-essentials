@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqecvg1xtntlc"]
+
+[ext_resource type="Texture2D" uid="uid://bm2elowec5pkw" path="res://Sprites/Milk.png" id="1_4lfky"]
+[ext_resource type="Script" uid="uid://imavm2hkabtw" path="res://Scripts/UserInterface/Screenspace/Workbench/IngredientRow.cs" id="1_vwrxk"]
+
+[node name="Ingredient" type="MarginContainer" node_paths=PackedStringArray("_name", "_icon")]
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_vwrxk")
+_name = NodePath("HorizontalContainer/Name")
+_icon = NodePath("HorizontalContainer/Icon")
+
+[node name="HorizontalContainer" type="HBoxContainer" parent="."]
+layout_direction = 2
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Icon" type="TextureRect" parent="HorizontalContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("1_4lfky")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Name" type="Label" parent="HorizontalContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.54902, 0.717647, 0.784314, 1)
+theme_override_font_sizes/font_size = 20
+text = "INGREDIENT"
+vertical_alignment = 1

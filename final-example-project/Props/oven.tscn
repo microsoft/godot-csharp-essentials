@@ -1,0 +1,68 @@
+[gd_scene load_steps=13 format=3 uid="uid://ckoco5ib71t0j"]
+
+[ext_resource type="Script" uid="uid://wxyqpl46rnco" path="res://Scripts/UserInterface/Worldspace/InteractUI.cs" id="1_e4vaj"]
+[ext_resource type="Script" uid="uid://chyf4djm8mbdw" path="res://Scripts/Interaction/Workbench.cs" id="1_eej4v"]
+[ext_resource type="Script" uid="uid://bxfma2mkijyc6" path="res://Scripts/Interaction/InteractableArea.cs" id="1_sb5t1"]
+[ext_resource type="Resource" uid="uid://b6qaaa1mem1ra" path="res://Data/RawChicken.tres" id="2_20f07"]
+[ext_resource type="Resource" uid="uid://bhrtfup4qjhuy" path="res://Data/Milk.tres" id="3_m1ykt"]
+[ext_resource type="PackedScene" uid="uid://dc31152rbmu2j" path="res://UserInterface/Workbench/workbenchWindow.tscn" id="4_s6jvt"]
+[ext_resource type="PackedScene" uid="uid://3u7ckf4mdfhp" path="res://Props/Workbench_Base.tscn" id="7_m1ykt"]
+[ext_resource type="Resource" uid="uid://b8d1yfft8i3c4" path="res://Data/CookedChicken.tres" id="7_s72j3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1cq4g"]
+size = Vector3(2.2889404, 2.598999, 1.3666992)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ocwms"]
+size = Vector3(2.75, 1.168457, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_sb5t1"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_e4vaj"]
+font_size = 24
+
+[node name="Workbench" type="StaticBody3D" node_paths=PackedStringArray("_window")]
+script = ExtResource("1_eej4v")
+_window = NodePath("Control")
+_recipe = Array[Object]([ExtResource("2_20f07"), ExtResource("3_m1ykt")])
+
+[node name="Model" parent="." instance=ExtResource("7_m1ykt")]
+
+[node name="Static_CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.028869629, 1.1618042, 0.125)
+shape = SubResource("BoxShape3D_1cq4g")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 2
+script = ExtResource("1_sb5t1")
+
+[node name="Area_CollisionShape" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125, 0.5842285, 1.1400683)
+shape = SubResource("BoxShape3D_ocwms")
+debug_color = Color(0.93148136, 2.6375652e-05, 0.6546202, 0.41960785)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0.75)
+visibility_range_begin = 1.0
+visibility_range_begin_margin = 1.0
+visibility_range_end = 4.0
+visibility_range_end_margin = 1.0
+visibility_range_fade_mode = 2
+billboard = 1
+alpha_antialiasing_edge = 1.0
+texture = SubResource("ViewportTexture_sb5t1")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D" node_paths=PackedStringArray("_label")]
+transparent_bg = true
+msaa_2d = 2
+script = ExtResource("1_e4vaj")
+_label = NodePath("Label")
+
+[node name="Label" type="Label" parent="Sprite3D/SubViewport"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Interact"
+label_settings = SubResource("LabelSettings_e4vaj")
+
+[node name="Control" parent="." instance=ExtResource("4_s6jvt")]
+CookedChickenData = ExtResource("7_s72j3")

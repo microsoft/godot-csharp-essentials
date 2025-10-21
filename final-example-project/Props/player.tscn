@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://div2pc0kjvfvd"]
+
+[ext_resource type="Script" uid="uid://byr62ej7264jl" path="res://Scripts/Player/Player.cs" id="1_vbvt0"]
+[ext_resource type="PackedScene" uid="uid://udh14nhf7u4b" path="res://Props/dotnet_bot.tscn" id="2_a13gm"]
+[ext_resource type="Script" uid="uid://cig1skxlq74ec" path="res://Scripts/Camera/CameraController.cs" id="2_vbvt0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hb0y7"]
+
+[sub_resource type="Environment" id="Environment_1jt1u"]
+ambient_light_color = Color(1, 0.901516, 0.488579, 1)
+ssao_enabled = true
+ssao_detail = 5.0
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_energy = 1.1
+glow_enabled = true
+glow_intensity = 1.2
+glow_bloom = 0.5
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("_cameraController", "_playerModel", "_animationController")]
+collision_layer = 3
+script = ExtResource("1_vbvt0")
+_baseMovementSpeed = 4.0
+_cameraController = NodePath("CameraPivot")
+_playerModel = NodePath("Visual")
+_animationController = NodePath("Visual/Dotnet_Bot/AnimationTree")
+
+[node name="Visual" type="Node3D" parent="."]
+
+[node name="Dotnet_Bot" parent="Visual" instance=ExtResource("2_a13gm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_hb0y7")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+script = ExtResource("2_vbvt0")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraPivot"]
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 0.93969285, 0.3420202, 0, -0.3420202, 0.93969285, 0, 0, 0)
+environment = SubResource("Environment_1jt1u")
+
+[editable path="Visual/Dotnet_Bot"]

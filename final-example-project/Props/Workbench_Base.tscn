@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://3u7ckf4mdfhp"]
+
+[ext_resource type="PackedScene" uid="uid://b88hdf1jl3ntd" path="res://Models/Kitchen/Workbench.glb" id="1_f2g7t"]
+[ext_resource type="Material" uid="uid://chycw3qw7ngbh" path="res://Materials/Props_Material.tres" id="2_2r01u"]
+[ext_resource type="Material" uid="uid://cyqx8orem2nni" path="res://Materials/Oven_Material.tres" id="3_ms2wc"]
+
+[node name="Workbench2" instance=ExtResource("1_f2g7t")]
+
+[node name="Workbench" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_2r01u")
+
+[node name="Oven" parent="." index="1"]
+surface_material_override/0 = ExtResource("3_ms2wc")

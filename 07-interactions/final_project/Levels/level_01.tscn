@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckn6awvol27lh"]
+
+[ext_resource type="PackedScene" uid="uid://bkxeh5hao7377" path="res://Props/player.tscn" id="1_hb0y7"]
+[ext_resource type="PackedScene" uid="uid://b664htiqar7e3" path="res://Props/table.tscn" id="2_1jt1u"]
+[ext_resource type="PackedScene" uid="uid://dre2v4263pn21" path="res://Props/chicken_station.tscn" id="2_er0or"]
+[ext_resource type="Script" uid="uid://cy4fmiss40j15" path="res://Scripting/GameManager.cs" id="4_1cq4g"]
+
+[node name="Level_01" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999927, 0.0104895, 0.00605615, 0, -0.5, 0.866025, 0.0121123, -0.865962, -0.499964, 0, 9.64554, 2.7561)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.999927, 0.0104895, 0.00605615, -0.0113934, 0.644864, 0.764212, 0.00411085, -0.764225, 0.644937, 0, 9.64554, 15.2437)
+
+[node name="Player" parent="." instance=ExtResource("1_hb0y7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 4.08598)
+collision_layer = 3
+
+[node name="ChickenStation" parent="." instance=ExtResource("2_er0or")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.932868, 0.7499995, 2.3518384)
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="Kitchen" type="CSGCombiner3D" parent="Environment"]
+use_collision = true
+
+[node name="Wall" type="CSGBox3D" parent="Environment/Kitchen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.25, 1.8)
+size = Vector3(0.5, 5, 6)
+
+[node name="Wall2" type="CSGBox3D" parent="Environment/Kitchen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 2.25, 1.8)
+size = Vector3(0.5, 5, 6)
+
+[node name="Wall3" type="CSGBox3D" parent="Environment/Kitchen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, -1.4)
+size = Vector3(10.5, 5, 0.5)
+
+[node name="Floor" type="CSGBox3D" parent="Environment/Kitchen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.8)
+use_collision = true
+size = Vector3(10, 0.5, 6.5)
+
+[node name="Dining" type="CSGCombiner3D" parent="Environment"]
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="Environment/Dining"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 12.5)
+use_collision = true
+size = Vector3(20, 0.5, 15)
+
+[node name="Wall" type="CSGBox3D" parent="Environment/Dining"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.75, 2.25, 12.5)
+size = Vector3(0.5, 5, 15)
+
+[node name="Door_Cutout" type="CSGBox3D" parent="Environment/Dining/Wall"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -0.75, 0.5)
+operation = 2
+size = Vector3(3, 3.5, 5)
+
+[node name="Wall2" type="CSGBox3D" parent="Environment/Dining"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.25, 2.25, 12.5)
+size = Vector3(0.5, 5, 15)
+
+[node name="Wall3" type="CSGBox3D" parent="Environment/Dining"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 2.25, 19.75)
+size = Vector3(20.5, 5, 0.5)
+
+[node name="Wall4" type="CSGBox3D" parent="Environment/Dining"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 2.25, 5)
+size = Vector3(20.5, 5, 0.5)
+
+[node name="Door_Cutout" type="CSGBox3D" parent="Environment/Dining/Wall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.75, 0)
+operation = 2
+size = Vector3(3, 3.5, 5)
+
+[node name="Table" parent="." instance=ExtResource("2_1jt1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.11572, 1.648, 10.0176)
+
+[node name="Table2" parent="." instance=ExtResource("2_1jt1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.63428, 1.648, 10.0176)
+
+[node name="Table3" parent="." instance=ExtResource("2_1jt1u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.865725, 1.648, 15.0176)
+
+[node name="GameManager" type="Node3D" parent="." node_paths=PackedStringArray("_chickenStation")]
+script = ExtResource("4_1cq4g")
+_chickenStation = NodePath("../ChickenStation")

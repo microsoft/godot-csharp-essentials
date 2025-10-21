@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkxeh5hao7377"]
+
+[ext_resource type="Material" uid="uid://ctajgutju3xm2" path="res://Materials/player_material.tres" id="1_rad38"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_5wxv7"]
+material = ExtResource("1_rad38")
+
+[sub_resource type="BoxMesh" id="BoxMesh_y5hcb"]
+material = ExtResource("1_rad38")
+size = Vector3(0.25, 0.25, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2nftw"]
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_rad38"]
+
+[node name="Player" type="CharacterBody3D"]
+
+[node name="Visual" type="Node3D" parent="."]
+
+[node name="Model" type="MeshInstance3D" parent="Visual"]
+mesh = SubResource("CapsuleMesh_5wxv7")
+
+[node name="Arm" type="MeshInstance3D" parent="Visual/Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+mesh = SubResource("BoxMesh_y5hcb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_2nftw")
+
+[node name="Camera" type="Node3D" parent="."]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -5)
+shape = SubResource("SeparationRayShape3D_rad38")
+spring_length = 3.0
+margin = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="Camera/SpringArm3D"]
+transform = Transform3D(-1, 6.18173e-08, -6.18173e-08, 0, 0.707107, 0.707107, 8.74228e-08, 0.707107, -0.707107, 0, 0, 0)

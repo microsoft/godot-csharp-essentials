@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dv15pdo28y3ab"]
+
+[ext_resource type="Texture2D" uid="uid://cqckm2q5yx33j" path="res://Materials/Textures/Dotnet_Bot_dotnet.png" id="1_4bvh7"]
+
+[resource]
+albedo_texture = ExtResource("1_4bvh7")

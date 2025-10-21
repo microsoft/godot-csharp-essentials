@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://b664htiqar7e3"]
+
+[ext_resource type="PackedScene" path="res://Props/stool.tscn" id="1_6ouh1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hosx3"]
+shading_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.323713, 0.186599, 0.0761823, 1)
+
+[node name="Table" type="Node3D"]
+
+[node name="Table" type="CSGCombiner3D" parent="."]
+use_collision = true
+
+[node name="Top" type="CSGCylinder3D" parent="Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+use_collision = true
+radius = 1.5
+height = 0.198
+sides = 32
+material = SubResource("StandardMaterial3D_hosx3")
+
+[node name="Leg" type="CSGCylinder3D" parent="Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+use_collision = true
+height = 1.0
+sides = 32
+material = SubResource("StandardMaterial3D_hosx3")
+
+[node name="Stool" parent="." instance=ExtResource("1_6ouh1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.9)
+
+[node name="Stool2" parent="." instance=ExtResource("1_6ouh1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9, 0, 0)
+
+[node name="Stool3" parent="." instance=ExtResource("1_6ouh1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9, 0, 0)
+
+[node name="Stool4" parent="." instance=ExtResource("1_6ouh1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.9)

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://csy5le7ufe840"]
+
+[node name="OmniLight3D" type="OmniLight3D"]
+light_color = Color(0.95879287, 0.9394699, 0.9984053, 1)
+light_energy = 0.5
+light_indirect_energy = 1.1
+light_specular = 1.0
+shadow_enabled = true
+shadow_opacity = 0.75
+shadow_blur = 3.99
+omni_range = 7.087

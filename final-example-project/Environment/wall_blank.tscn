@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://pikfwkgefx02"]
+
+[ext_resource type="PackedScene" uid="uid://b152tibode1u8" path="res://Models/Environment/Wall_Blank.glb" id="1_dx2ow"]
+[ext_resource type="Material" uid="uid://ba05wqyroui2e" path="res://Materials/Wall_material.tres" id="2_6frbt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fi8hk"]
+size = Vector3(0.5, 4.5, 3)
+
+[node name="Wall_Blank" instance=ExtResource("1_dx2ow")]
+
+[node name="Wall_Double" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_6frbt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+shape = SubResource("BoxShape3D_fi8hk")

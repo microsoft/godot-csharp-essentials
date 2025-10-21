@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmb6g66kj81vv"]
+
+[ext_resource type="Script" uid="uid://b6taos1swyphj" path="res://Scripts/Props/Workbench.cs" id="1_1u88c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pbphk"]
+size = Vector3(3, 1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ocwms"]
+size = Vector3(2, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1cq4g"]
+size = Vector3(2, 1, 1)
+
+[node name="Oven" type="Area3D"]
+script = ExtResource("1_1u88c")
+
+[node name="Area3d - CollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.50475955)
+shape = SubResource("BoxShape3D_pbphk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_ocwms")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_1cq4g")

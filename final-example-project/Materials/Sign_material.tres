@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://m8vkluggyk0a"]
+
+[ext_resource type="Texture2D" uid="uid://dw3ij3hfpc8p7" path="res://Materials/Textures/Wall Base Color.png" id="1_q7324"]
+[ext_resource type="Texture2D" uid="uid://cqbhonn7lng2r" path="res://Materials/Textures/Wall Emission.png" id="2_sc3wx"]
+
+[resource]
+resource_name = "Material"
+cull_mode = 2
+albedo_texture = ExtResource("1_q7324")
+roughness = 0.5
+emission_enabled = true
+emission = Color(0.78977096, 0.6277065, 0.08955171, 1)
+emission_energy_multiplier = 4.71
+emission_operator = 1
+emission_texture = ExtResource("2_sc3wx")
