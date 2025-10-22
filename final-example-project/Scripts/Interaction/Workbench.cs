@@ -7,6 +7,9 @@ public partial class Workbench : Node3D, IInteractable
 
     [Export] private ItemData[] _recipe;
 
+    /// <summary>
+    /// Initializes the workbench with recipe data and hides the UI.
+    /// </summary>
     public override void _Ready()
     {
         //Populate the recipe data for test purposes
@@ -16,8 +19,14 @@ public partial class Workbench : Node3D, IInteractable
         _window.Hide();
     }
 
+    /// <summary>
+    /// Hides the workbench UI when player stops interacting.
+    /// </summary>
     public void Disengage() => _window.Hide();
 
+    /// <summary>
+    /// Toggles the workbench UI visibility.
+    /// </summary>
     public void Interact()
     {
         if (_window.Visible)

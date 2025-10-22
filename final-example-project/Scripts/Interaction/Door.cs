@@ -14,8 +14,7 @@ public partial class Door : Area3D
     private const string CLOSE_ANIMATION_NAME = "Close";
 
     /// <summary>
-    /// Called when the node enters the scene tree for the first time.
-    /// Initializes the animation player reference and subscribes to body enter/exit events.
+    /// Initializes the door and connects body enter/exit events.
     /// </summary>
     public override void _Ready()
     {
@@ -29,19 +28,17 @@ public partial class Door : Area3D
     }
 
     /// <summary>
-    /// Callback invoked when a 3D body enters the door's Area3D trigger zone.
+    /// Opens the door when a body enters the area.
     /// </summary>
-    /// <param name="body">The Node3D body that entered the area.</param>
     private void OnBodyEntered(Node3D body) => Open();
 
     /// <summary>
-    /// Callback invoked when a 3D body exits the door's Area3D trigger zone.
+    /// Closes the door when a body exits the area.
     /// </summary>
-    /// <param name="body">The Node3D body that exited the area.</param>
     private void OnBodyExited(Node3D body) => Close();
 
     /// <summary>
-    /// Plays the door opening animation at the specified speed scale.
+    /// Plays the door opening animation.
     /// </summary>
     private void Open()
     {

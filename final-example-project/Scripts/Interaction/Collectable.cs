@@ -12,6 +12,9 @@ public partial class Collectable : Node3D, IInteractable
 
     private bool _isPlayerInArea = false;
 
+    /// <summary>
+    /// Initializes the collectable with default values.
+    /// </summary>
     public override void _Ready()
     {
         if (_itemData == null)
@@ -30,8 +33,14 @@ public partial class Collectable : Node3D, IInteractable
         _remainingAmount = _total;
     }
 
+    /// <summary>
+    /// Called when player stops interacting with the collectable.
+    /// </summary>
     public void Disengage() { }
 
+    /// <summary>
+    /// Collects one item and adds it to the player's inventory.
+    /// </summary>
     public void Interact()
     {
         if (_remainingAmount > 0)

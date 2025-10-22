@@ -24,9 +24,7 @@ public partial class PlayerAnimation : AnimationTree
     private AnimationNodeStateMachinePlayback _smPlayback;
 
     /// <summary>
-    /// Called when the node enters the scene tree.
-    /// Gets the AnimationNodeStateMachinePlayback object from the AnimationTree
-    /// and calculates the base jump animation length for time scaling.
+    /// Initializes the animation system and sets idle state.
     /// </summary>
     public override void _Ready()
     {
@@ -42,7 +40,6 @@ public partial class PlayerAnimation : AnimationTree
 
     /// <summary>
     /// Sets the player to idle animation state.
-    /// Turns on idle condition and turns off walking condition in the StateMachine.
     /// </summary>
     public void SetIdleState()
     {
@@ -52,7 +49,6 @@ public partial class PlayerAnimation : AnimationTree
 
     /// <summary>
     /// Sets the player to walking animation state.
-    /// Turns off idle condition and turns on walking condition in the StateMachine.
     /// </summary>
     public void SetMovingState()
     {
@@ -61,18 +57,18 @@ public partial class PlayerAnimation : AnimationTree
     }
 
     /// <summary>
-    /// Triggers the jump animation using a OneShot node.
+    /// Triggers the jump animation.
     /// </summary>
     public void SetJumpState() => Set(PARAM_JUMP_ONESHOT, (int)AnimationNodeOneShot.OneShotRequest.Fire);
 
 
     /// <summary>
-    /// Triggers the pickup animation using a OneShot node.
+    /// Triggers the pickup animation.
     /// </summary>
     public void PlayPickup() => Set(PARAM_PICKUP_ONESHOT, (int)AnimationNodeOneShot.OneShotRequest.Fire);
     
     /// <summary>
-    /// Triggers the wave animation using a OneShot node.
+    /// Triggers the wave animation.
     /// </summary>
     public void PlayWave() => Set(PARAM_WAVE_ONESHOT, (int)AnimationNodeOneShot.OneShotRequest.Fire);
 

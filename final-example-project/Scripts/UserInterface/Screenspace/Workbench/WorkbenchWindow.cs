@@ -16,12 +16,18 @@ public partial class WorkbenchWindow : Control
 
     private ItemData[] _ingredients;
 
+    /// <summary>
+    /// Initializes the workbench window and connects button events.
+    /// </summary>
     public override void _Ready()
     {
         craftButton.Pressed += OnCraft_Pressed;
         closeButton.Pressed += OnClose_Pressed;
     }
 
+    /// <summary>
+    /// Sets up the workbench with the required ingredients and creates UI rows.
+    /// </summary>
     public void Configure(ItemData[] ingredients)
     {
         _ingredients = ingredients;
@@ -46,6 +52,9 @@ public partial class WorkbenchWindow : Control
         }
     }
 
+    /// <summary>
+    /// Handles the craft button press to create an item if ingredients are available.
+    /// </summary>
     private void OnCraft_Pressed()
     {
         //Check if player has required 
@@ -70,6 +79,9 @@ public partial class WorkbenchWindow : Control
         Player.Instance.Inventory.AddItem(item);
     }
 
+    /// <summary>
+    /// Handles the close button press to hide the workbench window.
+    /// </summary>
     private void OnClose_Pressed()
     {
         // Logic to handle closing the workbench UI

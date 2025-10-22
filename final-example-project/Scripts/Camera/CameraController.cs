@@ -5,6 +5,9 @@ public partial class CameraController : Node3D
 {
     [Export] private float _sensitivity = 0.2f;
 
+    /// <summary>
+    /// Handles mouse input for camera rotation when right mouse button is held.
+    /// </summary>
     public override void _UnhandledInput(InputEvent @event)
     {
         if (GetViewport().GuiGetFocusOwner() != null)

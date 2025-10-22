@@ -12,6 +12,9 @@ public partial class InventoryWindow : Control
 
     public static InventoryWindow Instance { get; private set; }
 
+    /// <summary>
+    /// Ensures only one instance of InventoryWindow exists (singleton pattern).
+    /// </summary>
     public override void _EnterTree()
     {
         if (Instance == null)
@@ -26,6 +29,9 @@ public partial class InventoryWindow : Control
         }
     }
 
+    /// <summary>
+    /// Initializes inventory slots by creating instances from the template.
+    /// </summary>
     public override void _Ready()
     {
         Hide();
@@ -42,15 +48,23 @@ public partial class InventoryWindow : Control
 
     }
 
+    /// <summary>
+    /// Refreshes inventory data and displays the inventory window.
+    /// </summary>
     public void ShowInventory()
     {
-        // Refresh inventory data before showing
         Refresh();
         Show();
     }
 
+    /// <summary>
+    /// Hides the inventory window.
+    /// </summary>
     public void HideInventory() => Hide();
 
+    /// <summary>
+    /// Updates all inventory slots with current item data.
+    /// </summary>
     private void Refresh()
     {
         // Refresh logic for inventory slots
