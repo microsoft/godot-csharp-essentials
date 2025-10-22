@@ -4,7 +4,7 @@
 
 # Godot C# Essentials: A Beginner's Guide
 
-Welcome to your first step into game development with Godot and C#! This beginner-friendly course helps C# developers learn game development with the Godot Engine, walking you step by step through how to use C# to build interactive games. By the end, you understand the core concepts and workflows needed to bring your ideas to life.
+Welcome to your first step into game development with [Godot](https://godotengine.org/) and [C#](https://learn.microsoft.com/en-us/dotnet/csharp/)! This [beginner-friendly course](https://www.youtube.com/playlist?list=PLdo4fOcmZ0oU76HcRU9jdPnOP9eFUglle) helps C# developers learn game development with the Godot Engine, walking you step by step through how to use C# to build interactive games. By the end, you understand the core concepts and workflows needed to bring your ideas to life.
 
 You'll learn how to create a controllable player, build levels with scenes and nodes, add interactive objects, and even design a simple crafting UI. With hands-on challenges and a final sample project, you'll gain the confidence to start building your own games.
 
