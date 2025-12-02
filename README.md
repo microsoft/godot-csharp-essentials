@@ -34,7 +34,7 @@ Some lessons may include project files, in which case you will find the followin
 
 ![](./images/flybyCafe.png)
 
-Explore the **[Fly By Café sample project](./final-example-project/README.md)** to see how everything comes together. This project demonstrates takes the techniques that you learned a step further. Concepts include:
+Explore the **[Fly By Café sample project](./final-example-project/README.md)** to see how everything comes together. This project demonstrates the techniques that you learned a step further. Concepts include:
 
 **Advanced Character Systems**
 - Animation management using AnimationTree with state machines and layered animations.
