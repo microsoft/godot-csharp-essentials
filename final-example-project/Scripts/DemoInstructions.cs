@@ -14,7 +14,7 @@ public partial class DemoInstructions : Node3D
             "\n" +
             "• Press [color=yellow]Space[/color] to jump.\n" +
             "• Press [color=yellow]WASD[/color] to move.\n" +
-            "• Press [color=yellow]WASD[/color] to open your Inventory.\n" +
+            "• Press [color=yellow]I[/color] to open your Inventory.\n" +
             "• Press [color=yellow]E[/color] to Interact with objects.\n" +
             "• Visit the Workbench to view the required ingredients.\n" +
             "• Collect ingredients from the stations on the sides.\n" +
