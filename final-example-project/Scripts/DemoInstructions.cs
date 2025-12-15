@@ -16,6 +16,7 @@ public partial class DemoInstructions : Node3D
             "• Press [color=yellow]WASD[/color] to move.\n" +
             "• Press [color=yellow]I[/color] to open your Inventory.\n" +
             "• Press [color=yellow]E[/color] to Interact with objects.\n" +
+            "• Hold [color=yellow]Right Click[/color] and move the [color=yellow]Mouse[/color] to turn.\n" +
             "• Visit the Workbench to view the required ingredients.\n" +
             "• Collect ingredients from the stations on the sides.\n" +
             "\n" +
